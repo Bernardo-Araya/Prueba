@@ -1,6 +1,5 @@
-# TIME'S
-Repositorio para caso TIME'S Integracion de Plataformas
-Carrito de compras con pagos integrados a través del entorno de pruebas Webpay
+# MasterBikes
+Repositorio para caso MasterBikes Integracion de Plataformas
 
 ## Requirements
 
@@ -21,3 +20,4 @@ PASSWORD: admin123
 ----------------------------------
 
 [![Python](https://img.shields.io/badge/-Python-3572A5?style=for-the-badge)](https://github.com/Orange-OpenSource/floss-toolbox/search?l=python)
+# Prueba
