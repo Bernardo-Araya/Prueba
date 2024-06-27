@@ -4,7 +4,7 @@ from app_obras.views import *
 urlpatterns = [
     path('', index,name='index'),
     path('nosotros.html', nosotros,name='nosotros'),
-    path('galeria.html', galeria,name='galeria'),
+    path('arriendo.html', arriendo,name='arriendo'),
     path('administracion.html', administracion,name='administracion'),
     path('crear.html', crear,name='crear'),
     path('mostrar.html', mostrar,name='mostrar'),

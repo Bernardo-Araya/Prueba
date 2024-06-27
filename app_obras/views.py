@@ -25,10 +25,10 @@ def nosotros(request):
 	
 	return render(request, 'nosotros.html',context={'datos':productos})
 
-def galeria(request):
+def arriendo(request):
 	productos= Producto.objects.all()
 	
-	return render(request, 'galeria.html',context={'datos':productos})
+	return render(request, 'arriendo.html',context={'datos':productos})
 
 def administracion(request):
 	productos= Producto.objects.all()
