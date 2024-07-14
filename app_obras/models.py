@@ -40,3 +40,14 @@ class detalle_boleta(models.Model):
     def __str__(self):
         return str(self.id_detalle_boleta)
 
+class Arriendo(models.Model):
+    idPedido = models.AutoField(primary_key=True)
+    nombre = models.CharField(max_length= 20, verbose_name= "Nombre ")
+    apellido = models.CharField(max_length= 20, verbose_name= "Apellido ")
+    empresa = models.CharField(max_length= 60, verbose_name= "Empresa")
+    email = models.EmailField(verbose_name= "Email ")
+    cantidad = models.IntegerField(blank=True, null=True, verbose_name="Cantidad ")
+    fecha_envio = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.nombre} {self.apellido} - Pedido {self.idPedido}"

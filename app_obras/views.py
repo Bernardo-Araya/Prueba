@@ -6,8 +6,9 @@ import random
 from transbank.error.transbank_error import TransbankError
 from transbank.webpay.webpay_plus.transaction import Transaction
 from rest_framework import generics
+from django.contrib import messages
 
-from app_obras.forms import ProductoForm
+from app_obras.forms import ProductoForm, ArriendoForm
 from .models import Categoria, Producto, Boleta, detalle_boleta
 from .serializers import CategoriaSerializer, ProductoSerializer, BoletaSerializer, DetalleBoletaSerializer
 from django.http import HttpResponseBadRequest
@@ -24,11 +25,6 @@ def nosotros(request):
 	productos= Producto.objects.all()
 	
 	return render(request, 'nosotros.html',context={'datos':productos})
-
-def arriendo(request):
-	productos= Producto.objects.all()
-	
-	return render(request, 'arriendo.html',context={'datos':productos})
 
 def administracion(request):
 	productos= Producto.objects.all()
@@ -161,6 +157,21 @@ def procesar_pago(request):
         return render(request, 'webpay/plus/error.html', {'error': 'Método HTTP no permitido'})
 
 
+def arriendo(request):
+    if request.method == 'POST':
+        form = ArriendoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Su solicitud fue enviado correctamente.')
+            return redirect('arriendo')
+        else:
+            messages.error(request, 'Datos inválidos, por favor ingreselos nuevamente.')
+    else:
+        form = ArriendoForm()
+
+    return  render(request, 'arriendo.html', {'form': form})     
+            
+
 ##API
 
 
@@ -195,5 +206,4 @@ class DetalleBoletaList(generics.ListCreateAPIView):
 class DetalleBoletaDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = detalle_boleta.objects.all()
     serializer_class = DetalleBoletaSerializer
-
 

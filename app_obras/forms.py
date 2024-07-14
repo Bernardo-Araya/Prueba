@@ -1,5 +1,5 @@
 from django import forms
-from .models import Producto
+from .models import Producto, Arriendo
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
@@ -65,4 +65,57 @@ class ProductoForm(forms.ModelForm):
                     'min': '0',
                 }
             ),
+        }
+class ArriendoForm(forms.ModelForm):
+    class Meta:
+        model = Arriendo
+        fields = ['nombre', 'apellido', 'empresa' , 'email', 'cantidad']
+        labels ={
+            'nombre' : 'Nombre',
+            'apellido' : 'Apellido',
+            'empresa' : 'Empresa',
+            'email' : 'Email',
+            'cantidad' : 'Cantidad'
+        }
+        widgets={
+            'nombre': forms.TextInput(
+                attrs={
+                'placerholder': 'Ingrese su nombre',
+                'id' : 'nombre',
+                'class' : 'form-control',
+                }
+            ),
+
+            'apellido': forms.TextInput(
+                attrs={
+                'placerholder': 'Ingrese su apellido',
+                'id' : 'apellido',
+                'class' : 'form-control',
+                }
+            ),
+            'empresa': forms.TextInput(
+                attrs={
+                'placerholder': 'Ingrese el nombre de la empresa',
+                'id' : 'empresa',
+                'class' : 'form-control',
+                }
+            ),
+
+            'email': forms.EmailInput(
+                attrs={
+                    'placerholder': 'Ingrese su correo',
+                    'id' : 'email',
+                    'class' : 'form-control',
+                }
+            ),
+
+            'cantidad': forms.NumberInput(
+                attrs={
+                'placerholder': 'Ingrese la cantidad que necesita',
+                'id' : 'cantidad',
+                'class' : 'form-control',
+                'step': '0',
+                'min': '0',                
+                }
+            )                                    
         }

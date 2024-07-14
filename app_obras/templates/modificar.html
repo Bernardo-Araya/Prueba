@@ -44,7 +44,8 @@
                 idProducto: "required",
                 marca: "required",
                 nombre: "required",
-                categoria: "required"
+                categoria: "required",
+                precio: "required",
             },
             messages:{
                 idProducto:{
@@ -57,8 +58,11 @@
                     required: 'Ingrese un modelo..',
                 },
                 categoria:{
-                    required: 'Seleccione una categoria..',
+                    required: 'Seleccione una categoria..', 
                 },
+                precio:{
+                   required: "Ingrese precio..."
+                },                
             }
         })
     })
@@ -141,6 +145,14 @@
                 </label>
                 {{ form.categoria }}
             </div>
+
+            <div class="row">
+              <label for="{{ form.field.name }}">
+                  {{ form.precio.label }}
+              </label>
+              {{ form.precio }}
+          </div>
+                     
 
             <br><br>
             <input type="submit" class="btn btn-primary" value="Modificar">

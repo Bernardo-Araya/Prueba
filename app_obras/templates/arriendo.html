@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Sobre Nosotros - MasterBikes</title>
+  <title>Arriendo - MasterBikes</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -67,8 +67,27 @@
     <!-- ======= Breadcrumbs Section ======= -->
 
     <section class="page-section bg-light breadcrumbs" id="portfolio">
-      <!-- Contenido de la sección, si es necesario -->
-    </section>
+
+    <div class="container">
+      <div>
+        <div class="section-title">
+            <h2>Formulario de Arriendo</h2>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="form">
+                    <form method="POST" id="formulario2">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
   
 
   </main><!-- End #main -->
