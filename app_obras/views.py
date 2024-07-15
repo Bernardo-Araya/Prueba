@@ -169,7 +169,8 @@ def arriendo(request):
     else:
         form = ArriendoForm()
 
-    return  render(request, 'arriendo.html', {'form': form})     
+    return  render(request, 'arriendo.html', {'form': form})
+     
             
 
 ##API
