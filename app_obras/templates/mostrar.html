@@ -80,14 +80,25 @@
           <li><a class="nav-link scrollto" href="nosotros.html">Nosotros</a></li>
           <li><a class="nav-link scrollto" href="arriendo.html">Arriendo</a></li>
           <li><a class="nav-link scrollto" href="/#contact">Ubicación</a></li>   
+<<<<<<< HEAD
           <li><a class="nav-link scrollto active" href="mostrar.html">Productos</a></li>            
+=======
+          <li><a class="nav-link scrollto active" href="mostrar.html">Productos</a></li>
+          <li><a class="nav-link scrollto" href="Mantencion.html">Mantención</a></li>             
+>>>>>>> 85851ffd8f8e41941781c2d283594a5209847f8b
           {% if user.is_authenticated %}
           <li><a class="nav-link scrollto" href="administracion.html">Administración</a></li>     
           {% endif %}  
           {% if user.is_authenticated %}
+<<<<<<< HEAD
           <li><a class="nav-link scrollto" href="index.html" onclick="showLogoutMessage(event)">Cerrar Sesión</a></li>
           {% else %}
           <li><a class="nav-link scrollto" href="login.html">Login</a></li>
+=======
+          <li><a class="nav-link scrollto" href="/admin/logout/" onclick="showLogoutMessage(event)">Cerrar Sesión</a></li>
+          {% else %}
+          <li><a class="nav-link scrollto" href="/admin/">Login</a></li>
+>>>>>>> 85851ffd8f8e41941781c2d283594a5209847f8b
           {% endif %}
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>

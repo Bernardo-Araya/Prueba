@@ -1,6 +1,7 @@
 from distutils.command.upload import upload # type: ignore
 from django.db import models
 import datetime
+<<<<<<< HEAD
 from django.core.validators import MinLengthValidator
 
 # Create your models here.
@@ -18,15 +19,42 @@ class Producto(models.Model):
     imagen = models.ImageField(upload_to='imagenes', null=True, blank=True, verbose_name='Imagen')
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE, verbose_name="Categoria")
     precio = models.IntegerField(blank=True, null=True, verbose_name="Precio")
+=======
+# Create your models here.
+class Categoria (models.Model):
+    idCategoria = models.IntegerField (primary_key=True, verbose_name= 'Id de Categoria')
+    nombreCategoria = models.CharField(max_length=50,verbose_name='Nombre de Categoria')
+
+    def __str__(self):
+        return self.nombreCategoria
+    
+class Producto (models.Model):
+    idProducto= models.CharField(max_length=6, primary_key=True, verbose_name='Id de Producto')
+    marca= models.CharField(max_length=20,verbose_name='Marca')
+    nombre= models.CharField(max_length=40, verbose_name='Nombre de producto')
+    imagen= models.ImageField(upload_to='imagenes', null=True, blank=True,verbose_name='Imagen')
+    categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE, verbose_name="Categoria")
+    precio=models.IntegerField(blank=True, null=True, verbose_name="Precio")
+>>>>>>> 85851ffd8f8e41941781c2d283594a5209847f8b
 
     def __str__(self):
         return self.idProducto
 
+<<<<<<< HEAD
 class Boleta(models.Model):
     id_boleta = models.AutoField(primary_key=True)
     total = models.BigIntegerField()
     fechaCompra = models.DateTimeField(blank=False, null=False, default=datetime.datetime.now)
 
+=======
+
+
+class Boleta(models.Model):
+    id_boleta=models.AutoField(primary_key=True)
+    total=models.BigIntegerField()
+    fechaCompra=models.DateTimeField(blank=False, null=False, default = datetime.datetime.now)
+    
+>>>>>>> 85851ffd8f8e41941781c2d283594a5209847f8b
     def __str__(self):
         return str(self.id_boleta)
 
@@ -42,6 +70,7 @@ class detalle_boleta(models.Model):
 
 class Arriendo(models.Model):
     idPedido = models.AutoField(primary_key=True)
+<<<<<<< HEAD
     nombre = models.CharField(max_length=20, verbose_name="Nombre")
     apellido = models.CharField(max_length=20, verbose_name="Apellido")
     empresa = models.CharField(max_length=60, verbose_name="Empresa")
@@ -63,3 +92,14 @@ class User(models.Model):
     def __str__(self):
         return self.email
 
+=======
+    nombre = models.CharField(max_length= 20, verbose_name= "Nombre ")
+    apellido = models.CharField(max_length= 20, verbose_name= "Apellido ")
+    empresa = models.CharField(max_length= 60, verbose_name= "Empresa")
+    email = models.EmailField(verbose_name= "Email ")
+    cantidad = models.IntegerField(blank=True, null=True, verbose_name="Cantidad ")
+    fecha_envio = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.nombre} {self.apellido} - Pedido {self.idPedido}"
+>>>>>>> 85851ffd8f8e41941781c2d283594a5209847f8b

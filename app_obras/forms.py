@@ -1,10 +1,14 @@
+<<<<<<< HEAD
 import re
+=======
+>>>>>>> 85851ffd8f8e41941781c2d283594a5209847f8b
 from django import forms
 from .models import Producto, Arriendo
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
 class RegistroUserForm(UserCreationForm):
+<<<<<<< HEAD
     email = forms.EmailField(required=True)
     direccion = forms.CharField(max_length=255, required=True, label='Dirección')
     rut = forms.CharField(max_length=12, required=True, label='RUT')
@@ -16,6 +20,11 @@ class RegistroUserForm(UserCreationForm):
         fields = ['email', 'nombre', 'apellido', 'direccion', 'rut', 'password1', 'password2']
 
 
+=======
+    class Meta:
+        model = User
+        fields = [ 'username', 'first_name', 'last_name', 'email', 'password1', 'password2']
+>>>>>>> 85851ffd8f8e41941781c2d283594a5209847f8b
 
 class ProductoForm(forms.ModelForm):
     class Meta:

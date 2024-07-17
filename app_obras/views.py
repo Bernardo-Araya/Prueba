@@ -1,11 +1,16 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+<<<<<<< HEAD
 from django.contrib import messages
+=======
+from app_obras.compra import Carrito
+>>>>>>> 85851ffd8f8e41941781c2d283594a5209847f8b
 from django.http import HttpResponse
 import random
 from transbank.error.transbank_error import TransbankError
 from transbank.webpay.webpay_plus.transaction import Transaction
 from rest_framework import generics
+<<<<<<< HEAD
 from app_obras.compra import Carrito
 from app_obras.forms import ProductoForm, ArriendoForm, RegistroUserForm
 from .models import Categoria, Producto, Boleta, detalle_boleta
@@ -82,6 +87,55 @@ def eliminar(request, producto_id):
 @login_required
 def modificar(request, producto_id):
     productoModificada = Producto.objects.get(idProducto=producto_id)  # Buscamos el objeto
+=======
+from django.contrib import messages
+
+from app_obras.forms import ProductoForm, ArriendoForm
+from .models import Categoria, Producto, Boleta, detalle_boleta
+from .serializers import CategoriaSerializer, ProductoSerializer, BoletaSerializer, DetalleBoletaSerializer
+from django.http import HttpResponseBadRequest
+import requests
+
+
+def index(request):
+	productos= Producto.objects.all()
+	
+	return render(request, 'index.html',context={'datos':productos})
+
+
+def nosotros(request):
+	productos= Producto.objects.all()
+	
+	return render(request, 'nosotros.html',context={'datos':productos})
+
+def administracion(request):
+	productos= Producto.objects.all()
+	
+	return render(request, 'administracion.html',context={'datos':productos})
+
+@login_required
+def crear(request):
+    if request.method=="POST":
+        productoform=ProductoForm(request.POST,request.FILES)
+        if productoform.is_valid():
+            productoform.save()     #similar al insert en función
+            return redirect ('administracion')
+    else:
+        productoform=ProductoForm()
+    return render (request, 'crear.html', {'productoform': productoform})
+
+
+
+@login_required
+def eliminar(request, producto_id): 
+    productoEliminada = Producto.objects.get(idProducto=producto_id) #similar a select * from... where...
+    productoEliminada.delete()
+    return redirect ('administracion')
+
+@login_required
+def modificar(request, producto_id): 
+    productoModificada = Producto.objects.get(idProducto=producto_id) # Buscamos el objeto
+>>>>>>> 85851ffd8f8e41941781c2d283594a5209847f8b
     
     if request.method == "POST":
         formulario = ProductoForm(data=request.POST, instance=productoModificada)
@@ -110,7 +164,10 @@ def obtener_tasa_de_cambio():
         print(f"Error al obtener la tasa de cambio: {e}")
         return None
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 85851ffd8f8e41941781c2d283594a5209847f8b
 def mostrar(request):
     try:
         response = requests.get('http://127.0.0.1:8000/api/productos/')
@@ -121,7 +178,11 @@ def mostrar(request):
         productos = []
 
     tasa_de_cambio = obtener_tasa_de_cambio()
+<<<<<<< HEAD
     if (tasa_de_cambio is not None):
+=======
+    if tasa_de_cambio is not None:
+>>>>>>> 85851ffd8f8e41941781c2d283594a5209847f8b
         for producto in productos:
             producto['precio_usd'] = round(producto['precio'] * tasa_de_cambio, 2)
     else:
@@ -134,31 +195,54 @@ def mostrar(request):
     return render(request, 'mostrar.html', datos)
 
 
+<<<<<<< HEAD
 def agregar_producto(request, id):
     carrito_compra = Carrito(request)
+=======
+
+def agregar_producto(request,id):
+    carrito_compra= Carrito(request)
+>>>>>>> 85851ffd8f8e41941781c2d283594a5209847f8b
     producto = Producto.objects.get(idProducto=id)
     carrito_compra.agregar(producto=producto)
     return redirect('mostrar')
 
+<<<<<<< HEAD
 
 def eliminar_producto(request, id):
     carrito_compra = Carrito(request)
+=======
+def eliminar_producto(request, id):
+    carrito_compra= Carrito(request)
+>>>>>>> 85851ffd8f8e41941781c2d283594a5209847f8b
     producto = Producto.objects.get(idProducto=id)
     carrito_compra.eliminar(producto=producto)
     return redirect('mostrar')
 
+<<<<<<< HEAD
 
 def restar_producto(request, id):
     carrito_compra = Carrito(request)
+=======
+def restar_producto(request, id):
+    carrito_compra= Carrito(request)
+>>>>>>> 85851ffd8f8e41941781c2d283594a5209847f8b
     producto = Producto.objects.get(idProducto=id)
     carrito_compra.restar(producto=producto)
     return redirect('mostrar')
 
+<<<<<<< HEAD
 
 def limpiar_carrito(request):
     carrito_compra = Carrito(request)
     carrito_compra.limpiar()
     return redirect('mostrar')
+=======
+def limpiar_carrito(request):
+    carrito_compra= Carrito(request)
+    carrito_compra.limpiar()
+    return redirect('mostrar')    
+>>>>>>> 85851ffd8f8e41941781c2d283594a5209847f8b
 
 
 def procesar_pago(request):
@@ -201,10 +285,19 @@ def arriendo(request):
     else:
         form = ArriendoForm()
 
+<<<<<<< HEAD
     return render(request, 'arriendo.html', {'form': form})
 
 
 ## API
+=======
+    return  render(request, 'arriendo.html', {'form': form})
+     
+            
+
+##API
+
+>>>>>>> 85851ffd8f8e41941781c2d283594a5209847f8b
 
 class CategoriaList(generics.ListCreateAPIView):
     queryset = Categoria.objects.all()
@@ -237,3 +330,7 @@ class DetalleBoletaList(generics.ListCreateAPIView):
 class DetalleBoletaDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = detalle_boleta.objects.all()
     serializer_class = DetalleBoletaSerializer
+<<<<<<< HEAD
+=======
+
+>>>>>>> 85851ffd8f8e41941781c2d283594a5209847f8b

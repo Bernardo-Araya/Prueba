@@ -1,7 +1,10 @@
 from django.urls import path, include
 from app_obras.views import *
+<<<<<<< HEAD
 from . import views
 from django.contrib.auth import views as auth_views
+=======
+>>>>>>> 85851ffd8f8e41941781c2d283594a5209847f8b
 
 urlpatterns = [
     path('', index,name='index'),
@@ -12,8 +15,11 @@ urlpatterns = [
     path('mostrar.html', mostrar,name='mostrar'),
     path('eliminar/<producto_id>', eliminar, name="eliminar"),
     path('modificar/<producto_id>', modificar, name="modificar"),
+<<<<<<< HEAD
     path('registro.html', views.registro, name='registro'),
     path('login.html', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
+=======
+>>>>>>> 85851ffd8f8e41941781c2d283594a5209847f8b
 
     path('eliminar_producto/<producto_id>', eliminar_producto, name="eliminar"),
     path('procesar_pago/', procesar_pago,name="procesar_pago"),
